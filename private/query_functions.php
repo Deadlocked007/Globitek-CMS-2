@@ -236,8 +236,16 @@
       return $errors;
     }
 
-    $sql = ""; // TODO add SQL
+    $sql = "INSERT INTO salespeople"; // add SQL
     // For INSERT statments, $result is just true/false
+    $sql .= "(first_name, last_name, phone, email) ";
+    $sql .= "VALUES (";
+    $sql .= "'" . $user['first_name'] . "',";
+    $sql .= "'" . $user['last_name'] . "',";
+    $sql .= "'" . $user['phone'] . "',";
+    $sql .= "'" . $user['email'] . "',";
+    $sql .= ");";
+
     $result = db_query($db, $sql);
     if($result) {
       return true;
@@ -260,8 +268,17 @@
       return $errors;
     }
 
-    $sql = ""; // TODO add SQL
+    $sql = "UPDATE salespeople SET "; // add SQL
     // For update_salesperson statments, $result is just true/false
+
+    $sql = "UPDATE salespeople SET ";
+    $sql .= "first_name='" . $salesperson['first_name'] . "', ";
+    $sql .= "last_name='" . $salesperson['last_name'] . "', ";
+    $sql .= "phone='" . $salesperson['phone'] . "', ";
+    $sql .= "email='" . $salesperson['email'] . "' ";
+    $sql .= "WHERE id='" . $salesperson['id'] . "' ";
+    $sql .= "LIMIT 1;";
+
     $result = db_query($db, $sql);
     if($result) {
       return true;

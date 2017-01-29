@@ -16,6 +16,7 @@ if(is_post_request()) {
   if(isset($_POST['phone'])) { $salesperson['phone'] = $_POST['phone']; }
   if(isset($_POST['email'])) { $salesperson['email'] = $_POST['email']; }
 
+  echo $salesperson['phone'];
   $result = update_salesperson($salesperson);
   if($result === true) {
     redirect_to('show.php?id=' . $salesperson['id']);
