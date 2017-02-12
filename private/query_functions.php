@@ -60,7 +60,12 @@
       return $errors;
     }
 
-    $sql = ""; // TODO add SQL
+    $sql = "INSERT INTO states "; // add SQL
+    $sql .= "(name, code) ";
+    $sql .= "VALUES (";
+    $sql .= "'" . $state['name'] . "',";
+    $sql .= "'" . $state['code'] . "'";
+    $sql .= ");";
     // For INSERT statments, $result is just true/false
     $result = db_query($db, $sql);
     if($result) {
@@ -240,10 +245,10 @@
     // For INSERT statments, $result is just true/false
     $sql .= "(first_name, last_name, phone, email) ";
     $sql .= "VALUES (";
-    $sql .= "'" . $user['first_name'] . "',";
-    $sql .= "'" . $user['last_name'] . "',";
-    $sql .= "'" . $user['phone'] . "',";
-    $sql .= "'" . $user['email'] . "',";
+    $sql .= "'" . $salesperson['first_name'] . "',";
+    $sql .= "'" . $salesperson['last_name'] . "',";
+    $sql .= "'" . $salesperson['phone'] . "',";
+    $sql .= "'" . $salesperson['email'] . "'";
     $sql .= ");";
 
     $result = db_query($db, $sql);
@@ -371,7 +376,7 @@
     $sql .= "'" . $user['last_name'] . "',";
     $sql .= "'" . $user['email'] . "',";
     $sql .= "'" . $user['username'] . "',";
-    $sql .= "'" . $created_at . "',";
+    $sql .= "'" . $created_at . "'";
     $sql .= ");";
     // For INSERT statments, $result is just true/false
     $result = db_query($db, $sql);
